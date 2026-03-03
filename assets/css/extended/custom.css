@@ -1,3 +1,36 @@
+:root {
+  --font-sans: 'Plus Jakarta Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo a,
+.post-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.post-content p,
+.post-content li {
+  line-height: 1.75;
+}
+
+code,
+pre,
+kbd,
+samp,
+.copy-code,
+.post-meta,
+.breadcrumbs {
+  font-family: var(--font-mono);
+}
+
 /* === Blog Post Card Layout === */
 .post-list {
   display: flex;
