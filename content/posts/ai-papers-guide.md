@@ -13,6 +13,8 @@ The goal is not to overwhelm with trivia, but to give you a durable mental map o
 Use the index to jump by topic, or read top-to-bottom as a compact research timeline.
 At the end, there is a distilled concept list you can reuse as a study and interview checklist.
 
+![A Guide to Landmark AI Papers hero image](/images/ai-papers-guide-hero.jpg)
+
 ## Index of Papers
 
 1. [Attention Is All You Need (2017)](#1-attention-is-all-you-need-2017)
