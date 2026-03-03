@@ -7,6 +7,7 @@ defaultContentLanguage = "en"
 [params]
   author = "Abu Obaida"
   description = "Thoughts on tech, projects, and life by Abu Obaida."
+  defaultTheme = "dark"
   #profileMode = true
   ShowReadingTime = true
   ShowShareButtons = false
