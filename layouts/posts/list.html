@@ -1,14 +1,40 @@
 {{- define "main" }}
 <div class="post-list">
   {{- range .Pages }}
-  <article class="post-card">
-    <div class="post-thumbnail">
-      {{- if .Params.thumbnail }}
-      <a href="{{ .Permalink }}">
-        <img src="{{ .Params.thumbnail }}" alt="{{ .Title }} thumbnail" loading="lazy">
-      </a>
+  {{- $image := "" }}
+  {{- with .Params.thumbnail }}
+    {{- $image = . }}
+  {{- end }}
+  {{- if and (eq $image "") .Params.cover.image }}
+    {{- if (ne .Params.cover.relative true) }}
+      {{- $image = .Params.cover.image }}
+    {{- else }}
+      {{- $image = path.Join .RelPermalink .Params.cover.image }}
+    {{- end }}
+  {{- end }}
+  {{- if and (eq $image "") .Params.images }}
+    {{- if reflect.IsSlice .Params.images }}
+      {{- with index .Params.images 0 }}
+        {{- $image = . }}
       {{- end }}
+    {{- else }}
+      {{- $image = .Params.images }}
+    {{- end }}
+  {{- end }}
+  {{- if eq $image "" }}
+    {{- with findRE `!\[[^\]]*]\(([^)]+)\)` .RawContent 1 }}
+      {{- $match := index . 0 }}
+      {{- $image = replaceRE `^!\[[^\]]*]\(([^ )]+)(?: .*)?\)$` `$1` $match }}
+    {{- end }}
+  {{- end }}
+  <article class="post-card{{ if eq $image "" }} no-thumbnail{{ end }}">
+    {{- if ne $image "" }}
+    <div class="post-thumbnail">
+      <a href="{{ .Permalink }}">
+        <img src="{{ $image | safeURL }}" alt="{{ .Title }} thumbnail" loading="lazy">
+      </a>
     </div>
+    {{- end }}
     <div class="post-info">
       <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
       <time datetime="{{ .Date.Format "2006-01-02" }}">
