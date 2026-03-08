@@ -40,20 +40,15 @@ defaultContentLanguage = "en"
     url = "/"
     weight = 10
   [[menu.main]]
-    identifier = "posts"
-    name = "Blog"
-    url = "/posts/"
-    weight = 20
-  [[menu.main]]
     identifier = "projects"
     name = "Projects"
     url = "/projects/"
-    weight = 30
+    weight = 20
   [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 40
+    weight = 30
 
 [taxonomies]
   tag = "tags"

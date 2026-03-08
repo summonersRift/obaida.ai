@@ -1,6 +1,13 @@
 {{- define "main" }}
+{{- $pages := .Pages }}
+{{- if .IsHome }}
+  {{- $pages = where site.RegularPages "Section" "posts" }}
+  {{- if eq (len $pages) 0 }}
+    {{- $pages = where site.RegularPages "Type" "posts" }}
+  {{- end }}
+{{- end }}
 <div class="post-list">
-  {{- range .Pages }}
+  {{- range $pages.ByDate.Reverse }}
   <article class="post-card">
     <div class="post-thumbnail">
       {{- if .Params.thumbnail }}
